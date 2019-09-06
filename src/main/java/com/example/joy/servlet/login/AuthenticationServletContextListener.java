@@ -45,8 +45,9 @@ public class AuthenticationServletContextListener implements ServletContextListe
         actions = new AuthenticationActions(authenticationClient);
 
         ServletContext servletContext = sce.getServletContext();
-        registerFilter(servletContext, "/*", new OktaFilter());
+        registerFilter(servletContext, "/*", new OktaFilter(actions));
 
+        registerAction(servletContext, "/successfully_landed", "/WEB-INF/jsp/home.jsp", null);
         registerAction(servletContext, "/authn/login","/WEB-INF/jsp/authn/login.jsp", actions::login);
         registerAction(servletContext, "/authn/logout", (String) null, actions::logout);
         registerAction(servletContext, "/authn/change-password","/WEB-INF/jsp/authn/change-password.jsp", actions::changePassword);

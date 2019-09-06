@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.okta.jwt:okta-jwt-verifier:0.4.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.okta.jwt:okta-jwt-verifier-impl:0.4.0" level="project" />
+    <orderEntry type="library" name="Maven: com.okta.commons:okta-config-check:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: com.okta.commons:okta-commons-lang:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.jsonwebtoken:jjwt-api:0.10.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.jsonwebtoken:jjwt-impl:0.10.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: io.jsonwebtoken:jjwt-jackson:0.10.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.6" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.6" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.squareup.okhttp3:okhttp:3.11.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.squareup.okio:okio:1.14.0" level="project" />
+    <orderEntry type="library" name="Maven: com.okta.authn.sdk:okta-authn-sdk-api:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.okta.sdk:okta-sdk-api:1.5.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.okta.authn.sdk:okta-authn-sdk-impl:1.0.0" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.okta.sdk:okta-sdk-impl:1.5.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.yaml:snakeyaml:1.17" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: com.okta.sdk:okta-sdk-httpclient:1.5.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.httpcomponents:httpclient:4.5.7" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.httpcomponents:httpcore:4.4.11" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: commons-codec:commons-codec:1.11" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-server:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-http:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-io:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-webapp:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-xml:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-servlet:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-security:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-annotations:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-plus:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-jndi:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: javax.annotation:javax.annotation-api:1.3" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm:7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-commons:7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:7.0" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:apache-jsp:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty:jetty-util:9.4.18.v20190429" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jetty.toolchain:jetty-schemas:3.1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.mortbay.jasper:apache-jsp:8.5.40" level="project" />
+    <orderEntry type="library" name="Maven: org.mortbay.jasper:apache-el:8.5.40" level="project" />
+    <orderEntry type="library" name="Maven: org.eclipse.jdt:ecj:3.17.0" level="project" />
+    <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: ch.qos.logback:logback-core:1.2.3" level="project" />
+  </component>
+</module>

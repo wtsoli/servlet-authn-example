@@ -28,5 +28,31 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+            window.onload = function() {
+
+
+
+                var hash = window.location.hash.substr(1);
+                //alert(hash);
+
+                var result = hash.split('&').reduce(function (result, item) {
+                    var parts = item.split('=');
+                    result[parts[0]] = parts[1];
+                    return result;
+                }, {});
+
+                console.log("result", result);
+
+                let hashToken = result['access_token']
+                console.log("hashToken", hashToken);
+                console.log("inside window onload function");
+                if(hashToken != null) {
+                  console.log("hashToken: ", hashToken);
+                  window.location = '/successfully_landed?hashToken='.concat(hashToken);
+                }
+
+            }
+    </script>
 
 </head>

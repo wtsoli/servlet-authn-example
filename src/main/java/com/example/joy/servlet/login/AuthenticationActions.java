@@ -16,6 +16,7 @@
 package com.example.joy.servlet.login;
 
 import java.io.IOException;
+import java.time.Duration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +25,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.okta.authn.sdk.AuthenticationException;
 import com.okta.authn.sdk.client.AuthenticationClient;
 import com.okta.authn.sdk.resource.AuthenticationResponse;
+import com.okta.jwt.AccessTokenVerifier;
+import com.okta.jwt.Jwt;
+import com.okta.jwt.JwtVerificationException;
 import com.okta.sdk.resource.user.factor.FactorType;
+
+import static com.okta.jwt.JwtVerifiers.accessTokenVerifierBuilder;
 
 /**
  * This class contains logic needed to collect and display JSPs in order to advance a user through <a href="https://developer.okta.com/docs/api/resources/authn#transaction-state">Okta's Authentication State Machine</a>.
@@ -37,6 +43,23 @@ class AuthenticationActions {
 
     AuthenticationActions(AuthenticationClient authenticationClient) {
         this.authenticationClient = authenticationClient;
+    }
+
+    boolean isValidToken(String token) {
+        AccessTokenVerifier jwtVerifier = accessTokenVerifierBuilder()
+                .setIssuer("https://dev-314363.okta.com/oauth2/default")
+                .setAudience("api://default")      // defaults to 'api://default'
+                .setConnectionTimeout(Duration.ofSeconds(1000)) // defaults to 1000ms
+                .setReadTimeout(Duration.ofSeconds(1000))       // defaults to 1000ms
+                .build();
+
+        try {
+            Jwt jwt = jwtVerifier.decode(token);
+            System.out.println("jwt token value:\n" + jwt.getTokenValue());
+        } catch (JwtVerificationException e) {
+            e.printStackTrace(); // TODO:
+        }
+        return true;
     }
 
     /**

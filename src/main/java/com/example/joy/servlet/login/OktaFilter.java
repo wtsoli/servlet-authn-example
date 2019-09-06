@@ -16,6 +16,7 @@
 package com.example.joy.servlet.login;
 
 import com.okta.authn.sdk.resource.User;
+import com.okta.commons.lang.Strings;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -36,6 +37,12 @@ import java.io.IOException;
 public class OktaFilter implements Filter {
 
     static final String USER_SESSION_KEY = User.class.getName();
+
+    private AuthenticationActions actions;
+
+    public OktaFilter(AuthenticationActions actions) {
+        this.actions = actions;
+    }
 
     @Override
     public void init(FilterConfig filterConfig) {}
@@ -61,14 +68,24 @@ public class OktaFilter implements Filter {
 
         // no authenticated user found in session
         // redirect to /authn/login
-        response.sendRedirect("/authn/login");
+        //response.sendRedirect("/authn/login");
+
+        response.sendRedirect("https://dev-314363.okta.com/oauth2/default/v1/authorize?client_id=0oa1a9wr5eDsss0EJ357&response_type=token&scope=openid&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fauthn%2Flogin&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601&nonce=foo");
     }
 
     @Override
     public void destroy() {}
 
     private boolean isAuthenticated(HttpServletRequest request) {
-        return request.getSession(false) != null && request.getSession().getAttribute(USER_SESSION_KEY) != null;    
+
+        String token = request.getParameter("hashToken");
+        if(!Strings.isEmpty(token) && actions.isValidToken(token)) {
+            return true;
+        }
+
+        return false;
+
+        //return request.getSession(false) != null && request.getSession().getAttribute(USER_SESSION_KEY) != null;
     }
 
     private boolean isStaticAsset(HttpServletRequest request) {

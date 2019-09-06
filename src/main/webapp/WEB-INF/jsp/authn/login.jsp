@@ -15,7 +15,7 @@
   ~ limitations under the License.
 
   --%>
-<jsp:include page="../includes/header.jsp" />
+<jsp:include page="../includes/redirect_header.jsp" />
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <body>
     <div class="container">
