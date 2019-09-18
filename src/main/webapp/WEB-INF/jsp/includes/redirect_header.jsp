@@ -44,7 +44,7 @@
 
                 console.log("result", result);
 
-                let hashToken = result['access_token']
+                let hashToken = result['access_token'] || result['id_token'];
                 console.log("hashToken", hashToken);
                 console.log("inside window onload function");
                 if(hashToken != null) {

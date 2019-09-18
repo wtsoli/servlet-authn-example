@@ -26,6 +26,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
@@ -70,19 +71,39 @@ public class OktaFilter implements Filter {
         // redirect to /authn/login
         //response.sendRedirect("/authn/login");
 
-        response.sendRedirect("https://dev-314363.okta.com/oauth2/default/v1/authorize?client_id=0oa1a9wr5eDsss0EJ357&response_type=token&scope=openid&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fauthn%2Flogin&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601&nonce=foo");
+        //response.sendRedirect("https://sso-247-inc.oktapreview.com/oauth2/default/v1/authorize?client_id=0oanhufk2cjG5fNbi0h7&response_type=token&scope=openid&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fauthn%2Flogin&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601&nonce=foo");
+        response.sendRedirect("https://sso-247-inc.oktapreview.com/oauth2/default/v1/authorize?client_id=0oanhufk2cjG5fNbi0h7&response_type=id_token&scope=openid&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fauthn%2Flogin&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601&nonce=foo");
+
     }
 
     @Override
     public void destroy() {}
 
+    // Side effect to update session if token in request is authenticated successfully
     private boolean isAuthenticated(HttpServletRequest request) {
-
-        String token = request.getParameter("hashToken");
-        if(!Strings.isEmpty(token) && actions.isValidToken(token)) {
-            return true;
+        // only depends on token param if present, update session if valid token
+        if(request.getParameterMap().containsKey("hashToken")) {
+            String token = request.getParameter("hashToken");
+            if(!Strings.isEmpty(token) && actions.isValidToken(token)) {
+                request.getSession(true).setAttribute("oktaToken", token);
+                return true;
+            }
         }
 
+        HttpSession existingSession = request.getSession(false);
+
+        if(existingSession != null) {
+            String oktaToken = (String)existingSession.getAttribute("oktaToken");
+            if(!Strings.isEmpty(oktaToken) && actions.isValidToken(oktaToken)) {
+                return true;
+            } else {
+                // unauthenticated session, lead to re-login through okta
+                return false;
+            }
+        }
+
+        // if no valid "hashToken" param present and no session existing
+        // lead to re-login
         return false;
 
         //return request.getSession(false) != null && request.getSession().getAttribute(USER_SESSION_KEY) != null;

@@ -5,7 +5,8 @@
 
     <context-param>
         <param-name>orgUrl</param-name>
-        <param-value>https://dev-314363.okta.com</param-value>
+        <!--<param-value>https://dev-314363.okta.com</param-value>-->
+        <param-value>https://sso-247-inc.oktapreview.com</param-value>
     </context-param>
 
     <listener>

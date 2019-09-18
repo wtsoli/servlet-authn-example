@@ -26,11 +26,13 @@ import com.okta.authn.sdk.AuthenticationException;
 import com.okta.authn.sdk.client.AuthenticationClient;
 import com.okta.authn.sdk.resource.AuthenticationResponse;
 import com.okta.jwt.AccessTokenVerifier;
+import com.okta.jwt.IdTokenVerifier;
 import com.okta.jwt.Jwt;
 import com.okta.jwt.JwtVerificationException;
 import com.okta.sdk.resource.user.factor.FactorType;
 
 import static com.okta.jwt.JwtVerifiers.accessTokenVerifierBuilder;
+import static com.okta.jwt.JwtVerifiers.idTokenVerifierBuilder;
 
 /**
  * This class contains logic needed to collect and display JSPs in order to advance a user through <a href="https://developer.okta.com/docs/api/resources/authn#transaction-state">Okta's Authentication State Machine</a>.
@@ -46,15 +48,25 @@ class AuthenticationActions {
     }
 
     boolean isValidToken(String token) {
-        AccessTokenVerifier jwtVerifier = accessTokenVerifierBuilder()
-                .setIssuer("https://dev-314363.okta.com/oauth2/default")
-                .setAudience("api://default")      // defaults to 'api://default'
+//        AccessTokenVerifier jwtVerifier = accessTokenVerifierBuilder()
+//                //.setIssuer("https://dev-314363.okta.com/oauth2/default")
+//                .setIssuer("https://sso-247-inc.oktapreview.com/oauth2/default")
+//                .setAudience("api://default")      // defaults to 'api://default'
+//                .setConnectionTimeout(Duration.ofSeconds(1000)) // defaults to 1000ms
+//                .setReadTimeout(Duration.ofSeconds(1000))       // defaults to 1000ms
+//                .build();
+//
+        IdTokenVerifier jwtVerifier = idTokenVerifierBuilder()
+                .setIssuer("https://sso-247-inc.oktapreview.com/oauth2/default")
+                .setClientId("0oanhufk2cjG5fNbi0h7")
                 .setConnectionTimeout(Duration.ofSeconds(1000)) // defaults to 1000ms
                 .setReadTimeout(Duration.ofSeconds(1000))       // defaults to 1000ms
                 .build();
 
         try {
-            Jwt jwt = jwtVerifier.decode(token);
+//            Jwt jwt = jwtVerifier.decode(token);
+            Jwt jwt = jwtVerifier.decode(token, "foo");
+
             System.out.println("jwt token value:\n" + jwt.getTokenValue());
         } catch (JwtVerificationException e) {
             e.printStackTrace(); // TODO:
